@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-// Define interface for login session document
+
 export interface ILoginLogoutActivity extends Document {
   email: string;
   deviceType: string;
@@ -8,7 +8,7 @@ export interface ILoginLogoutActivity extends Document {
   logoutAt: Date;
 }
 
-// Define schema for login session
+
 const LoginLogoutActivitySchema: Schema = new Schema({
   email: { type: String, required: true },
   deviceType: { type: String, required: true },
@@ -16,5 +16,4 @@ const LoginLogoutActivitySchema: Schema = new Schema({
   logoutAt: { type: Date, default: null }
 });
 
-// Define and export the LoginSession model
 export default mongoose.model<ILoginLogoutActivity>('LoginLogoutActivity', LoginLogoutActivitySchema);
