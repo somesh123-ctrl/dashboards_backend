@@ -107,7 +107,7 @@ router.post('/login', async (req: Request, res: Response) => {
     const userAgent = req.headers['user-agent'];
     let deviceType = 'Unknown';
 
-    // Check if userAgent is defined and contains the necessary substrings
+  
     if (userAgent) {
       if (/(android|iphone|ipad)/i.test(userAgent)) {
         deviceType = 'Mobile';
@@ -116,7 +116,7 @@ router.post('/login', async (req: Request, res: Response) => {
       }
     }
 
-    // If OTP is correct, generate JWT token
+ 
     const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, "dfdfgdgdgfdgfdg", { expiresIn: '1h' });
 
     // Save login session data to database with device type
@@ -166,7 +166,7 @@ router.put('/sessions/:sessionId/logout', async (req: Request, res: Response) =>
   }
 });
 
-// Backend route to fetch sessions for the current user
+//route to fetch sessions for the current user
 router.get('/sessions', async (req: Request, res: Response) => {
   try {
     // Ensure that authorization header is present
@@ -180,7 +180,7 @@ router.get('/sessions', async (req: Request, res: Response) => {
     // Verify the token to get user information
     const decodedData = jwt.verify(token, "dfdfgdgdgfdgfdg") as JwtPayload;
 
-    // Ensure that email is present in decoded data
+  
     if (!decodedData.email) {
       return res.status(400).json({ message: 'Email not found in decoded data' });
     }
@@ -195,7 +195,7 @@ router.get('/sessions', async (req: Request, res: Response) => {
   }
 });
 
-// Backend route to fetch sessions for the current user
+// route to fetch sessions for the current user
 router.get('/useractivity', async (req: Request, res: Response) => {
   try {
     // Ensure that authorization header is present
@@ -209,7 +209,7 @@ router.get('/useractivity', async (req: Request, res: Response) => {
     // Verify the token to get user information
     const decodedData = jwt.verify(token, "dfdfgdgdgfdgfdg") as JwtPayload;
 
-    // Ensure that email is present in decoded data
+
     if (!decodedData.email) {
       return res.status(400).json({ message: 'Email not found in decoded data' });
     }
